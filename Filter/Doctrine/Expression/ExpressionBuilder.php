@@ -164,10 +164,8 @@ abstract class ExpressionBuilder
     {
         $value = $this->convertTypeToMask($value, $type);
 
-        return $this->expr()->like(
-            $this->forceCaseInsensitivity ? $this->expr()->lower($field) : $field,
-            $this->expr()->literal($value)
-        );
+        return $this->expr()->field($field)->equals('/' . $value . '/');
+        //return $this->expr()->field($field)->equals(new \MongoRegex('/.*' . $value . '.*/i'));
     }
 
     /**

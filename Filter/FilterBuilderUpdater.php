@@ -85,6 +85,7 @@ class FilterBuilderUpdater implements FilterBuilderUpdaterInterface
     {
         // create the right QueryInterface object
         $event = new PrepareEvent($queryBuilder);
+
         $this->dispatcher->dispatch(FilterEvents::PREPARE, $event);
 
         if (! $event->getFilterQuery() instanceof QueryInterface) {
